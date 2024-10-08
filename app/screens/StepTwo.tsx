@@ -29,20 +29,20 @@ const StepTwo = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', textAlign: 'center', padding: 16 }}>Подпиши се по-долу</Text>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', textAlign: 'center', padding: 16 }}>Unterschrift des Mitarbeiters</Text>
       <View style={{ flex: 1 }}>
         <Signature
           onOK={handleOK}
-          descriptionText="Подпис тук"
-          clearText="Изчисти"
-          confirmText="Запази"
+          descriptionText="Unterschrift hier"
+          clearText="Aufräumen"
+          confirmText="Speichern"
           webStyle={''}
           penColor='rgb(0, 0, 255)'
           style={{ flex: 1, borderWidth: 1, borderColor: '#ccc' }}
         />
       </View>
       <View style={{ padding: 16 }}>
-        <Button title="Напред" onPress={handleNext} color="#4CAF50" />
+        <Button title="Nächste" onPress={handleNext} color="#4CAF50" />
       </View>
     </View>
   );

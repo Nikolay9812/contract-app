@@ -476,17 +476,47 @@ const StepFour = () => {
   };
 
   return (
-    <View style={{ flex: 1, padding: 16, backgroundColor: "white" }}>
-      <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 16 }}>
-        Review and Download PDF
+    <View style={{ flex: 1, padding: 20, backgroundColor: "#f8f8f8" }}>
+      <Text style={{ fontSize: 28, fontWeight: "bold", marginBottom: 20, textAlign: "center", color: "#333" }}>
+        Überprüfung und Download des PDFs
       </Text>
-      <Button
-        title="Download Signed PDF"
-        onPress={generateAndDownloadPdf}
-        color="#4CAF50"
-      />
+      <Text style={{ fontSize: 16, marginBottom: 20, color: "#555", textAlign: "center" }}>
+        Bitte überprüfen Sie Ihre Informationen, bevor Sie das signierte PDF herunterladen.
+      </Text>
+      
+      {/* Anzeigen einer Zusammenfassung der Benutzereingabedaten */}
+      <View style={{ backgroundColor: "#fff", borderRadius: 8, padding: 15, shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.2, shadowRadius: 1.5, elevation: 3 }}>
+        <Text style={{ fontSize: 16, fontWeight: "bold", marginBottom: 10 }}>Arbeitgeber:</Text>
+        <Text style={{ fontSize: 14, color: "#555" }}>{owner}</Text>
+  
+        <Text style={{ fontSize: 16, fontWeight: "bold", marginVertical: 10 }}>Name:</Text>
+        <Text style={{ fontSize: 14, color: "#555" }}>{name}</Text>
+  
+        <Text style={{ fontSize: 16, fontWeight: "bold", marginVertical: 10 }}>Geschlecht:</Text>
+        <Text style={{ fontSize: 14, color: "#555" }}>{gender}</Text>
+  
+        <Text style={{ fontSize: 16, fontWeight: "bold", marginVertical: 10 }}>Datum:</Text>
+        <Text style={{ fontSize: 14, color: "#555" }}>{date}</Text>
+  
+        <Text style={{ fontSize: 16, fontWeight: "bold", marginVertical: 10 }}>Geburtsdatum:</Text>
+        <Text style={{ fontSize: 14, color: "#555" }}>{birthDate}</Text>
+  
+        <Text style={{ fontSize: 16, fontWeight: "bold", marginVertical: 10 }}>Adresse:</Text>
+        <Text style={{ fontSize: 14, color: "#555" }}>{address}</Text>
+      </View>
+  
+      {/* Download-Button */}
+      <View style={{ marginTop: 30 }}>
+        <Button
+          title="Download signiertes PDF"
+          onPress={generateAndDownloadPdf}
+          color="#4CAF50"
+          accessibilityLabel="Laden Sie das signierte PDF-Dokument herunter"
+        />
+      </View>
     </View>
   );
+  
 };
 
 export default StepFour;

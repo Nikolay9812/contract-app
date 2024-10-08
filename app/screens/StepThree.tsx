@@ -30,20 +30,20 @@ const StepThree = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', textAlign: 'center', padding: 16 }}>Подпис на собственика</Text>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', textAlign: 'center', padding: 16 }}>Unterschrift des Arbeitgeber</Text>
       <View style={{ flex: 1 }}>
         <Signature
           onOK={handleOK}
-          descriptionText="Подпис на собственика"
-          clearText="Изчисти"
-          confirmText="Запази"
+          descriptionText="Unterschrift des Arbeitgeber"
+          clearText="Aufräumen"
+          confirmText="Speichern"
           webStyle={''}
           penColor='rgb(0, 0, 255)'
           style={{ flex: 1, borderWidth: 1, borderColor: '#ccc' }}
         />
       </View>
       <View style={{ padding: 16 }}>
-        <Button title="Напред" onPress={handleNext} color="#4CAF50" />
+        <Button title="Nächste" onPress={handleNext} color="#4CAF50" />
       </View>
     </View>
   );
