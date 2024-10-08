@@ -1,37 +1,22 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import StepOne from './screens/StepOne';
+import StepTwo from './screens/StepTwo';
+import StepThree from './screens/StepThree';
+import StepFour from './screens/StepFour';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+const Stack = createStackNavigator();
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
+export default function App() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
+    <NavigationContainer independent>
+      <Stack.Navigator>
+        <Stack.Screen name="StepOne" component={StepOne} options={{ title: 'Step 1: Enter Details' }} />
+        <Stack.Screen name="StepTwo" component={StepTwo} options={{ title: 'Step 2: Signature Employee' }} />
+        <Stack.Screen name="StepThree" component={StepThree} options={{ title: 'Step 3: Signature Owner' }} />
+        <Stack.Screen name="StepFour" component={StepFour} options={{ title: 'Step 4: Preview & PDF' }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
