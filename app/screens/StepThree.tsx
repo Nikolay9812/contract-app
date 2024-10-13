@@ -14,6 +14,10 @@ const StepThree = () => {
   };
 
   const handleNext = () => {
+    if (!ownerSignature) {
+      alert("Bitte unterschreiben Sie zuerst."); // Покажи предупреждение, ако подписът е празен
+      return;
+    }
     navigation.navigate('StepFour', {
       gender: route.params.gender,
       owner: route.params.owner,
@@ -29,7 +33,7 @@ const StepThree = () => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{ flex: 1, backgroundColor: 'white',paddingTop:50, }}>
       <Text style={{ fontSize: 24, fontWeight: 'bold', textAlign: 'center', padding: 16 }}>Unterschrift des Arbeitgeber</Text>
       <View style={{ flex: 1 }}>
         <Signature

@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import * as DocumentPicker from 'expo-document-picker';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ScrollView } from 'react-native-gesture-handler';
+import { MaterialIcons } from '@expo/vector-icons'; // Добавяме икона
+
 
 // Типове за навигацията
 type RootStackParamList = {
@@ -25,6 +27,8 @@ type StepOneNavigationProp = StackNavigationProp<RootStackParamList, 'StepOne'>;
 
 const StepOne = () => {
   const navigation = useNavigation<StepOneNavigationProp>();
+  const [pdfUri, setPdfUri] = useState<string | null>(null);
+  const [pdfName, setPdfName] = useState<string | null>(null);
 
   // Структурирано състояние за всички полета
   const [formData, setFormData] = useState({
@@ -60,6 +64,8 @@ const StepOne = () => {
           ...prevData,
           pdfUri: file.uri,
         }));
+        setPdfUri(file.uri); // Задаване на избрания PDF
+        setPdfName(file.name); // Запазване на името на файла
         Alert.alert('Document Selected', `PDF file: ${file.name}`);
       } else {
         Alert.alert('Document not selected');
@@ -138,9 +144,12 @@ const StepOne = () => {
 
       <Button title="PDF-Dokument auswählen" onPress={pickDocument} />
       {formData.pdfUri && (
+        <View style={styles.pdfContainer}>
+        <MaterialIcons name="picture-as-pdf" size={34} color="red" />
         <Text numberOfLines={1} ellipsizeMode="tail" style={styles.pdfText}>
-          PDF ausgewählt: {formData.pdfUri}
+          {pdfName}
         </Text>
+      </View>
       )}
 
       <Button title="Nächste" onPress={handleNext} color="#4CAF50" />
@@ -149,6 +158,7 @@ const StepOne = () => {
 };
 const styles = StyleSheet .create({
   container: {
+    paddingTop:50,
     padding: 20,
     backgroundColor: '#f9f9f9',
     flexGrow: 1,
@@ -167,8 +177,14 @@ const styles = StyleSheet .create({
     marginBottom: 15,
     backgroundColor: '#fff',
   },
-  pdfText: {
+  pdfContainer: {
+    flexDirection: 'row',
+      alignItems: 'center',
+    justifyContent:'center',
     marginVertical: 10,
+  },
+  pdfText: {
+    marginLeft: 10,
     fontSize: 16,
     color: '#333',
   },
