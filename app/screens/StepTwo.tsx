@@ -4,7 +4,13 @@ import Signature from "react-native-signature-canvas";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { StepTwoNavigationProp, StepTwoRouteProp } from "./types";
 
-const StepTwo = () => {
+// Дефинираме типа на пропсовете
+interface StepTwoProps {
+  completedSteps: boolean[];
+  setCompletedSteps: React.Dispatch<React.SetStateAction<boolean[]>>;
+}
+
+const StepTwo = ({ completedSteps, setCompletedSteps }: StepTwoProps) => {
   const navigation = useNavigation<StepTwoNavigationProp>();
   const route = useRoute<StepTwoRouteProp>();
   const [employeeSignature, setEmployeeSignature] = React.useState<
@@ -16,10 +22,15 @@ const StepTwo = () => {
   };
 
   const handleNext = () => {
-    if (!employeeSignature) {
-      alert("Bitte unterschreiben Sie zuerst."); // Покажи предупреждение, ако подписът е празен
-      return;
-    }
+    // if (!employeeSignature) {
+    //   alert("Bitte unterschreiben Sie zuerst."); // Покажи предупреждение, ако подписът е празен
+    //   return;
+    // }
+    setCompletedSteps((prevSteps) => {
+      const newSteps = [...prevSteps];
+      newSteps[2] = true; // Отключи StepThree
+      return newSteps;
+    });
     navigation.navigate("StepThree", {
       gender: route.params.gender,
       owner: route.params.owner,

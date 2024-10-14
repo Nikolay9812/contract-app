@@ -8,7 +8,13 @@ import { StepFourNavigationProp, StepFourRouteProp } from "./types";
 import { processPdfPages } from "./processPages";
 import { useNavigation } from "expo-router";
 
-const StepFour = () => {
+// Дефинираме типа на пропсовете
+interface StepFourProps {
+  completedSteps: boolean[];
+  setCompletedSteps: React.Dispatch<React.SetStateAction<boolean[]>>;
+}
+
+const StepFour = ({ completedSteps, setCompletedSteps }: StepFourProps) => {
   const route = useRoute<StepFourRouteProp>();
   const navigation = useNavigation<StepFourNavigationProp>();
   const {
@@ -38,6 +44,10 @@ const StepFour = () => {
   const dateDayMonthFirst = `${dateDay}.${dateMonth}.`;
   const dateDayMonthSecond = `${dateDay}.${dateMonth}.`;
 
+  const ortWithDate = `${addressCity}, ${date}`;
+
+  const fullAddres = `${addressStreet}, ${addressPostalCode} ${addressCity}`;
+
   const data = {
     name,
     owner,
@@ -65,6 +75,8 @@ const StepFour = () => {
     stampText: `IVANOV TRANSPORT\nGymnasialstrasse 2\n55543 Bad Kreuznach\nivanov.transport@gmx.de\n+491726184067`,
     dateDayMonthFirst,
     dateDayMonthSecond,
+    ortWithDate,
+    fullAddres
   };
 
   const generateAndDownloadPdf = async () => {

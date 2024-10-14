@@ -30,6 +30,8 @@ export interface FieldCoordinates {
   birthYear?: { x: number; y: number };
   dateDayMonthFirst?: { x: number; y: number };
   dateDayMonthSecond?: { x: number; y: number };
+  ortWithDate?: { x: number; y: number };
+  fullAddres?: { x: number; y: number };
 }
 
 export const fieldCoordinates: CoordinatesMap = {
@@ -39,8 +41,7 @@ export const fieldCoordinates: CoordinatesMap = {
     employeeSignature: { x: 150, y: 360 },
   },
   8: {
-    date: { x: 145, y: 130 },
-    addressCity: { x: 220, y: 130 },
+    ortWithDate: { x: 145, y: 130 },
     employeeSignature: { x: 150, y: 70 },
     name: { x: 145, y: 85 },
     x1: { x: 42, y: 247 }, 
@@ -50,14 +51,12 @@ export const fieldCoordinates: CoordinatesMap = {
     x5: { x: 42, y: 160 }, 
   },
   9: {
-    date: { x: 190, y: 275 },
-    addressCity: { x: 110, y: 275 },
+    ortWithDate: { x: 110, y: 275 },
     employeeSignature: { x: 110, y: 260 },
     name: { x: 110, y: 320 },
   },
   10: {
-    date: { x: 190, y: 427 },
-    addressCity: { x: 110, y: 427 },
+    ortWithDate: { x: 110, y: 427 },
     employeeSignature: { x: 110, y: 410 },
     name: { x: 110, y: 470 },
   },
@@ -106,11 +105,11 @@ export const fieldCoordinates: CoordinatesMap = {
     dateDay: { x: 380, y: 645 },
     dateMonth: { x: 405, y: 645 },
     dateYear: { x: 430, y: 645 },
-    name: { x: 170, y: 443 },
-    birthDay: { x: 330, y: 442 },
-    birthMonth: { x: 355, y: 442 },
-    birthYear: { x: 380, y: 442 },
-    address: { x: 70, y: 406 },
+    name: { x: 177, y: 443 },
+    birthDay: { x: 410, y: 442 },
+    birthMonth: { x: 435, y: 442 },
+    birthYear: { x: 460, y: 442 },
+    fullAddres: { x: 130, y: 407 },
     employeeSignature: { x: 180, y: 70 },
   },
   25: {
@@ -135,7 +134,7 @@ export const fieldCoordinates: CoordinatesMap = {
     dateDay: { x: 435, y: 655 },
     dateMonth: { x: 457, y: 655 },
     dateYear: { x: 480, y: 655 },
-    name: { x: 280, y: 430 },
+    name: { x: 260, y: 430 },
     owner: { x: 90, y: 247 },
     ownerSignature: { x: 90, y: 140 },
     employeeSignature: { x: 380, y: 140 },

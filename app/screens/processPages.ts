@@ -30,6 +30,8 @@ export const processPdfPages = async (
     stampText: string;
     dateDayMonthFirst: string;
     dateDayMonthSecond: string;
+    ortWithDate: string;
+    fullAddres: string;
   }
 ) => {
   const pages = pdfDoc.getPages();
@@ -71,6 +73,15 @@ export const processPdfPages = async (
       page.drawText(data.date || '', {
         x: coords.date.x,
         y: coords.date.y,
+        size: 12,
+        color: rgb(0, 0, 0),
+      });
+    }
+
+    if (coords.ortWithDate) {
+      page.drawText(data.ortWithDate || '', {
+        x: coords.ortWithDate.x,
+        y: coords.ortWithDate.y,
         size: 12,
         color: rgb(0, 0, 0),
       });
@@ -135,6 +146,15 @@ export const processPdfPages = async (
       page.drawText(data.x5 || '', {
         x: coords.x5.x,
         y: coords.x5.y,
+        size: 12,
+        color: rgb(0, 0, 0),
+      });
+    }
+
+    if (coords.fullAddres) {
+      page.drawText(data.fullAddres || "", {
+        x: coords.fullAddres.x,
+        y: coords.fullAddres.y,
         size: 12,
         color: rgb(0, 0, 0),
       });
