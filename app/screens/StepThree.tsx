@@ -19,10 +19,10 @@ const StepThree = ({ completedSteps, setCompletedSteps }: StepThreeProps) => {
   };
 
   const handleNext = () => {
-    // if (!ownerSignature) {
-    //   alert("Bitte unterschreiben Sie zuerst."); // Покажи предупреждение, ако подписът е празен
-    //   return;
-    // }
+    if (!ownerSignature) {
+      alert("Bitte unterschreiben Sie zuerst."); // Покажи предупреждение, ако подписът е празен
+      return;
+    }
     setCompletedSteps((prevSteps) => {
       const newSteps = [...prevSteps];
       newSteps[3] = true; // Отключи StepFour
